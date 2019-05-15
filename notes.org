@@ -1,0 +1,83 @@
+* Requirement
+  1) Reusable Toolbar Component
+	 - Toolbar meaning a navigation bar?
+  2) Drop down selector (E.G. selecting a font)
+  3) A button with state (E.G. a "Bold" button)
+  4) A group of buttons that only allow one to be selected (E.G. left / center / right align)
+  5) A button that links to another URL location
+  6) Configurable by editing a JSON file
+
+* Ideas
+  1) Toolbar component, integrating bunch of umbrella smaller component satisfying the above requirements
+  2) Toolbar component, with everything implemented in itself
+  3) End results
+  4) How generalize should it be? 
+  5) Create library so everybody can use it
+
+* Drop-down Selector
+  - Let's start with Drop-down Selector
+  - 
+
+
+* Logs  
+** Set up ng-boostrap
+  1) Install ng-bootstrap
+	 #+begin_src shell
+	 npm install --save @ng-bootstrap/ng-bootstrap
+	 #+end_src
+  2) Import to main module
+	 #+LOCATION: ./src/app/app.module.ts
+	 #+begin_src javascript
+	   import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+	   @NgModule({
+		 ...
+		 imports: [NgbModule, ...],
+		 ...
+	   })
+	   export class YourAppModule {
+	   }
+	 #+end_src
+  3) Add Bootstrap CSS
+	 - Install through npm
+	   #+begin_src shell
+		 npm install --save bootstrap
+   	   #+end_src
+	 - Import in app
+	   #+LOCATION: ./src/styles.css
+	   #+begin_src css
+		 @import "~bootstrap/dist/css/bootstrap.css";
+	   #+end_src
+	   
+** Navi + Drop-down Experiment
+   1) Create drop-down component
+   2) Copy and Paste html from ng-bootstrap [[https://ng-bootstrap.github.io/#/components/dropdown/examples][dropdown site]]
+   3) Create tool-bar component
+   4) Incorporate drop-down in toolbar html template
+   5) Everything shows. Now how do we configure this drop-down effectively from toolbar?
+** Static Customization
+*** Goal
+   1) Aim is to customize the selectors inside Drop-down
+   2) Approach: @input or encode all customization in 
+*** @input approach (hard-coded)
+	1) Add @Input() in drop-down class & Use it in HTML template {{option}}
+	   #+begin_src typescript
+		 @Input() option: String
+	   #+end_src
+	2) Pass parameter down from Toolbar (Parent Component)
+	   #+begin_src html
+		 <app-drop-down [option]="'seek'"></app-drop-down>
+	   #+end_src
+	3) More general, pass down an array declared and defined in Toolbar.ts (Parent)
+	   #+begin_src javascript
+		 selectors: string[] = ['Test1', 'Test2', 'Test2']
+	   #+end_src
+	   #+begin_src html
+		 <app-drop-down [selectors]="selectors"></app-drop-down>
+	   #+end_src
+	4) Add *ngFor to iterate through array in drop-down.html 
+	   #+begin_src html
+		 <button *ngFor="let selector of selectors" ngbDropdownItem>{{selector}}</button>
+	   #+end_src
+*** @json approach (configuration-file)
+	   
