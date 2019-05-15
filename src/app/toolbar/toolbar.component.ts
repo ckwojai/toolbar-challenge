@@ -8,12 +8,12 @@ import * as config from './toolbar_config.json';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  // selectors: string[] = ['Test1', 'Test2', 'Test2']
-  dropdown_selectors: { text: string, callback: string }[] = config.dropdown.selectors
-  constructor() { }
+  dropdown_config: any = config.dropdown;
+  constructor() {
+  }
 
   ngOnInit() {
-    console.log(config.dropdown.selectors[1].text)
+    console.log(this.dropdown_config.selectors[1].text);
   }
 
 }

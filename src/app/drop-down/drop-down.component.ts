@@ -7,9 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DropDownComponent implements OnInit {
   @Input() selectors: { text: string, callback: string }[];
+  @Input() title: string;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.selectors[0].text);
   }
 
 }

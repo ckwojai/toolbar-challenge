@@ -1,19 +1,25 @@
 {
 	"dropdown": {
+		"title": "Select Font",
 		"selectors": 
 			[
 				{
-					"text": "try 1",
+					"text": "Font 1",
 					"callback": ""
 				},
 				{
-					"text": "try 2",
+					"text": "Font 2",
 					"callback": ""
 				},
 				{
-					"text": "try 3",
+					"text": "Font 3",
+					"callback": ""
+				},
+				{
+					"text": "Font 4",
 					"callback": ""
 				}				
+				
 			]
 	}
 }
