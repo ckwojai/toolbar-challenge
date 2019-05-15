@@ -1,0 +1,19 @@
+{
+	"dropdown": {
+		"selectors": 
+			[
+				{
+					"text": "try 1",
+					"callback": ""
+				},
+				{
+					"text": "try 2",
+					"callback": ""
+				},
+				{
+					"text": "try 3",
+					"callback": ""
+				}				
+			]
+	}
+}
