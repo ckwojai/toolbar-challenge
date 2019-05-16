@@ -8,7 +8,7 @@ import * as config from './toolbar_config.json';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  dropdown_config: any = config.dropdown;
+  dropdown_config: any = config.dropdown
   constructor() {
   }
 

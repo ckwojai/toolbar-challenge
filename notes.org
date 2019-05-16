@@ -55,7 +55,7 @@
    3) Create tool-bar component
    4) Incorporate drop-down in toolbar html template
    5) Everything shows. Now how do we configure this drop-down effectively from toolbar?
-** Static Customization
+** Dropdown Customization
 *** Goal
    1) Aim is to customize the selectors inside Drop-down
    2) Approach: @input or encode all customization in 
@@ -80,4 +80,36 @@
 		 <button *ngFor="let selector of selectors" ngbDropdownItem>{{selector}}</button>
 	   #+end_src
 *** @json approach (configuration-file)
+	1) Import config.json file in toolbar
+	   #+begin_src javascript
+		 import * as config from './toolbar_config.json';
+	   #+end_src
+	2) Add compiler option in tsconfig.json for parsing json
+	   #+begin_src javascript
+		 {
+			 "compileroptions": {
+				 "resolvejsonmodule": true,
+				 "esmoduleinterop": true,
+				 "allowsyntheticdefaultimports": true
+			 }
+		 }
+	   #+end_src
+	3) Pass configuration down from toolbar to drop-down
+	   #+begin_src typescript
+		   dropdown_config: any = config.dropdown
+		 // In html template
+		   <app-drop-down [title]="dropdown_config.title" [selectors]="dropdown_config.selectors"></app-drop-down>
+	   #+end_src
+    4) Adjust accordingly in drop-down component
+
 	   
+	   
+* Some key insights
+  - Some criterion for Re-usable components?
+	1) Should consist mostly dumb components, with no application logic
+  - How generalize should I make this toolbar?
+	1) Drop-down
+	   - # of selectors
+	   - Name of selectors (Helvetica, Times New Roman, etc.)
+	   - title of the dropdown (Select Font)
+	   - Maybe configure action function in the future?
