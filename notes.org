@@ -102,15 +102,12 @@
 	   #+end_src
     4) Adjust accordingly in drop-down component
 
-	   
-	   
 ** State Button	
 *** Goal
 	1) Get clickable button on the page
 	2) Pass in onClick function from Parent (toolbar) for state change
 	   + For starter, a function that just shows pop up messages when clicked
-	3) configure.json that configure the button's display text (e.g. Bold / Italics)
-
+	3) configure.json that configure the button's display text (e.g. Bold / Italics)jjj
 *** Get button on page	   
 	1) Add associated html template in button, copy from [[https://ng-bootstrap.github.io/#/components/buttons/examples][bootstrap Angular Site]]
 	   #+begin_src html
@@ -128,7 +125,60 @@
 		   FormsModule
 		 ],
 	   #+end_src
-	3) 
+*** Add onClick() method, to catch state change when clicked
+	#+begin_src typescript
+	  export class StateButtonComponent implements OnInit {
+	  state: boolean = false;
+	  onSelect(): void {
+		  console.log(this.state);
+	  }
+	  }
+	  // Add (click) directive in html template
+	  <input [(ngModel)]="state" (click)="onSelect()" type="checkbox" ngbButton> Bold
+	#+end_src
+	
+*** Extract click event to Parent Component, to make state-button "dumb"
+	1) Research and Learn EventEmitter and Output directive according to this [[https://angular.io/guide/component-interaction#parent-listens-for-child-event][Angular tutorial]]
+	2) Import EventEmitter & Output, then use them in child component
+	   #+LOCATION: state-button.component.ts
+	   #+begin_src typescript
+		 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+		 export class statebuttoncomponent implements oninit {
+		   state: boolean = false;
+		   @output() clicked = new eventemitter<boolean>();
+		   onselect(): void {
+			 console.log(this.state);
+			 this.clicked.emit(!this.state);
+		   }
+		 }
+	   #+end_src
+    3) Configuration in Parent component
+	   #+begin_src typescript
+		 button_onclicked(button_state: boolean) {
+		   if (button_state) {
+			 console.log("button clicked");
+		   } else {
+			 console.log("button unclicked");
+		   }
+		 }
+		 // In HTML template
+		 <app-state-button (clicked)="button_onClicked($event)"></app-state-button>
+	   #+end_src
+
+*** Configure.json for state button
+	1) Text display on the button
+	   #+begin_src typescript
+		 {
+		   "state_button": {
+			 "title": "Bold"
+		   }
+		 }
+	   #+end_src
+    2) Adjust parent and child component accordingly to incorporate customization
+
+	
+** Radio Buttons
+*** Goals   
 * Some key insights
   - Some criterion for Re-usable components?
 	1) Should consist mostly dumb components, with no application logic
@@ -138,3 +188,7 @@
 	   - Name of selectors (Helvetica, Times New Roman, etc.)
 	   - title of the dropdown (Select Font)
 	   - Maybe configure action function in the future?
+	   - Answers: configure.json should only be used for data-related configuration, no app logic should be included
+    2) Action function should always be extract to the toolbar Parent component for easy configuration
+	   - Make most components as dumb as possible
+	   - Concentrate all the logics in the root component (Toolbar) 

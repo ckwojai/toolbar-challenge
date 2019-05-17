@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-state-button',
@@ -6,8 +6,9 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./state-button.component.css']
 })
 export class StateButtonComponent implements OnInit {
-  state: boolean = true;
+  @Input() title: string;
   @Output() clicked = new EventEmitter<boolean>();
+  state: boolean = false;
   onSelect(): void {
     console.log(this.state);
     this.clicked.emit(!this.state);

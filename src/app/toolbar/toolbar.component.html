@@ -3,5 +3,5 @@
     Bootstrap
   </a>  
   <app-drop-down [title]="dropdown_config.title" [selectors]="dropdown_config.selectors"></app-drop-down>
-  <app-state-button (clicked)="button_onClicked($event)"></app-state-button>
+  <app-state-button [title]="state_button_config.title" (clicked)="button_onClicked($event)"></app-state-button>
 </nav>

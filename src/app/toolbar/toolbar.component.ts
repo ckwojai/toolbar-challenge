@@ -8,19 +8,19 @@ import * as config from './toolbar_config.json';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  dropdown_config: any = config.dropdown
-  button_state: boolean = false;
+  dropdown_config: any = config.dropdown;
+  state_button_config: any = config.state_button;
   constructor() {
   }
-  button_onClicked(button_state: boolean) {
+  button_onclicked(button_state: boolean) {
     if (button_state) {
-      console.log("Button Clicked");
+      console.log("button clicked");
     } else {
-      console.log("Button Unclicked");
+      console.log("button unclicked");
     }
   }
   ngOnInit() {
-    console.log(this.dropdown_config.selectors[1].text);
+    console.log(this.state_button_config);
   }
 
 }
