@@ -104,6 +104,31 @@
 
 	   
 	   
+** State Button	
+*** Goal
+	1) Get clickable button on the page
+	2) Pass in onClick function from Parent (toolbar) for state change
+	   + For starter, a function that just shows pop up messages when clicked
+	3) configure.json that configure the button's display text (e.g. Bold / Italics)
+
+*** Get button on page	   
+	1) Add associated html template in button, copy from [[https://ng-bootstrap.github.io/#/components/buttons/examples][bootstrap Angular Site]]
+	   #+begin_src html
+		 <label class="btn-primary" ngbButtonLabel>
+		   <input type="checkbox" ngbButton [(ngModel)]="state"> Bold
+		 </label>
+	   #+end_src
+	2) "Can't bind to ngModel error": Import Form modules per instruction from [[https://angular.io/tutorial/toh-pt1][Angular Tutorial Site]]
+	   #+LOCATION: app.module.ts
+	   #+begin_src typescript
+		 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+		 // Add it to @NgModule metadata's imports array
+		 imports: [
+		   BrowserModule,
+		   FormsModule
+		 ],
+	   #+end_src
+	3) 
 * Some key insights
   - Some criterion for Re-usable components?
 	1) Should consist mostly dumb components, with no application logic

@@ -7,6 +7,9 @@ import { DropDownComponent } from './drop-down/drop-down.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { StateButtonComponent } from './state-button/state-button.component';
+
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 export class YourAppModule {
 }
@@ -14,9 +17,11 @@ export class YourAppModule {
   declarations: [
     AppComponent,
     DropDownComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    StateButtonComponent
   ],
   imports: [
+    FormsModule,
     NgbModule,
     BrowserModule,
     AppRoutingModule
