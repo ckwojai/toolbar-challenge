@@ -26,15 +26,15 @@
 	},
 	"radio_buttons": [
 		{
-			"title": "Left",
+			"title": "left",
 			"value": "left"
 		},
 		{
-			"title": "Middle",
+			"title": "middle",
 			"value": "middle"
 		},
 		{
-			"title": "Right",
+			"title": "right",
 			"value": "right"
 		}
 	]

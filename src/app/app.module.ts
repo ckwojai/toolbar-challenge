@@ -10,7 +10,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { StateButtonComponent } from './state-button/state-button.component';
 
 import { FormsModule } from '@angular/forms';
-import { RadioButtonsComponent } from './radio-buttons/radio-buttons.component'; // <-- NgModel lives here
+import { RadioButtonsComponent } from './radio-buttons/radio-buttons.component';
+import { UrlButtonComponent } from './url-button/url-button.component'; // <-- NgModel lives here
 
 export class YourAppModule {
 }
@@ -20,7 +21,8 @@ export class YourAppModule {
     DropDownComponent,
     ToolbarComponent,
     StateButtonComponent,
-    RadioButtonsComponent
+    RadioButtonsComponent,
+    UrlButtonComponent
   ],
   imports: [
     FormsModule,

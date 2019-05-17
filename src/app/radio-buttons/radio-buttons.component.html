@@ -1,5 +1,4 @@
 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
-  
   <label *ngFor="let button of config" ngbButtonLabel class="btn-light">
     <input (click)="onClick(button.value)" ngbButton type="radio" [value]="button.value"> {{button.title}}
   </label>

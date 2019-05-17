@@ -213,20 +213,60 @@
 		 </div>
 	   #+end_src
 *** Extract onClick event to Parent
-	
+	#+LOCATIONS: radio-buttons
+	#+begin_src typescript
+	  import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+	  export class RadioButtonsComponent implements OnInit {
+		@Input() config: any;
+		@Output() clicked = new EventEmitter<string>();
+		model: any;
+		onClick(value: string): void {
+		  console.log(value);
+		  this.clicked.emit(value);
+		}
+	  }
+	  // HTML
+	  <label *ngFor="let button of config" ngbButtonLabel class="btn-light">
+	    <input (click)="onClick(button.value)" ngbButton type="radio" [value]="button.value"> {{button.title}}
+	  </label>
+	#+end_src
+	#+LOCATIONS: toolbar
+	#+begin_src typescript
+	  radio_onClicked(value: string) {
+		console.log(value);
+		}
+	  // HTML
+		<app-radio-buttons [config]="radio_buttons_config" (clicked)="radio_onClicked($event)"></app-radio-buttons>
+	#+end_src
 *** Configuration from Json
 	1) Json structure design
 	   #+begin_src typescript
-{
-"radio-buttons": 
-[
-{
-"title": "Left",
-"value": "left"
-}
-]
-}
+		 radio_buttons_config: any = config.radio_buttons;
+		 "radio_buttons": [
+			 {
+				 "title": "left",
+				 "value": "left"
+			 },
+			 {
+				 "title": "middle",
+				 "value": "middle"
+			 },
+			 {
+				 "title": "right",
+				 "value": "right"
+			 }
+		 ]
 	   #+end_src
+** URL Button	   
+*** Goals   
+	1) Create Component and Hardcode the link in
+	2) Implement configuration where it link to
+*** Hardcode button 
+	1) Use bootstrap button
+	   #+begin_src typescript
+<a class="btn btn-primary" href="#" role="button">Link</a>
+	   #+end_src
+    2) Create variable where it link to
 * Some key insights
   - Some criterion for Re-usable components?
 	1) Should consist mostly dumb components, with no application logic
