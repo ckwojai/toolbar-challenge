@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import * as config from './toolbar_config.json';
+import { EventEmitter } from 'protractor';
 
 
 @Component({
@@ -8,6 +9,8 @@ import * as config from './toolbar_config.json';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
+  @Output() bold_event = new EventEmitter<boolean>();
+
   dropdown_config: any = config.dropdown;
   state_button_config: any = config.state_button;
   radio_buttons_config: any = config.radio_buttons;
@@ -16,8 +19,10 @@ export class ToolbarComponent implements OnInit {
   button_onClicked(button_state: boolean) {
     if (button_state) {
       console.log("button clicked");
+      this.bold_event.emit(button_state);
     } else {
       console.log("button unclicked");
+      this.bold_event.emit(button_state);
     }
   }
   radio_onClicked(value: string) {

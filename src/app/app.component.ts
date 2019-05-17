@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public bold: boolean;
+  onBoldEvent(bold: boolean) {
+    this.bold = bold;
+  }
   title = 'toolbar-challenge';
 }

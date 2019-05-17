@@ -11,7 +11,8 @@ import { StateButtonComponent } from './state-button/state-button.component';
 
 import { FormsModule } from '@angular/forms';
 import { RadioButtonsComponent } from './radio-buttons/radio-buttons.component';
-import { UrlButtonComponent } from './url-button/url-button.component'; // <-- NgModel lives here
+import { UrlButtonComponent } from './url-button/url-button.component';
+import { SimpleTextComponent } from './simple-text/simple-text.component'; // <-- NgModel lives here
 
 export class YourAppModule {
 }
@@ -22,7 +23,8 @@ export class YourAppModule {
     ToolbarComponent,
     StateButtonComponent,
     RadioButtonsComponent,
-    UrlButtonComponent
+    UrlButtonComponent,
+    SimpleTextComponent
   ],
   imports: [
     FormsModule,

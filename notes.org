@@ -10,8 +10,10 @@
   - [[https://ng-bootstrap.github.io/#/home][Angular Powered Bootstrap]]
   - [[https://angular.io/tutorial][Angular Tour-of-Hero Tutorial]]
   - [[https://getbootstrap.com/docs/4.3/getting-started/introduction/][Bootstrap 4 Documentation]]
+  - [[https://stackblitz.com/github/ckwojai/toolbar-challenge/tree/config_refactor][Stackblitz refactor_config branch]]
+  - https://stackblitz.com/edit/github-tjfvrs-rwmi16
   - 
-  - 
+
 * Ideas
   1) Toolbar component, integrating bunch of umbrella smaller component satisfying the above requirements
   2) Toolbar component, with everything implemented in itself
@@ -284,7 +286,11 @@
 			@Input() config: any = { "title": "Link", "url": "https://google.com/" };
 			// HTML template
 			<a class="btn btn-outline-dark" href={{config.url}} role="button">{{config.title}}</a>
-		  #+end_src
+		  #+hend_src
+** Create simple component, that can be changed by toolbar
+*** Goals   
+	1) Demonstrate how toolbar can be used to act on sibling component in the app
+	2) Create a simple text area
 * Some key insights
   - Some criterion for Re-usable components?
 	1) Should consist mostly dumb components, with no application logic

@@ -1,2 +1,3 @@
 Welcome to {{ title }}!
-<app-toolbar></app-toolbar>
+<app-toolbar (bold_event)="onBoldEvent($event)"></app-toolbar>
+<app-simple-text [bold]="bold"></app-simple-text>
