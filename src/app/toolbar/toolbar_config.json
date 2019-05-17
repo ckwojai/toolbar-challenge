@@ -2,27 +2,40 @@
 	"dropdown": {
 		"title": "Select Font",
 		"selectors": 
-			[
-				{
-					"text": "Font 1",
-					"callback": ""
-				},
-				{
-					"text": "Font 2",
-					"callback": ""
-				},
-				{
-					"text": "Font 3",
-					"callback": ""
-				},
-				{
-					"text": "Font 4",
-					"callback": ""
-				}				
-				
-			]
+		[
+			{
+				"text": "Font 1",
+				"callback": ""
+			},
+			{
+				"text": "Font 2",
+				"callback": ""
+			},
+			{
+				"text": "Font 3",
+				"callback": ""
+			},
+			{
+				"text": "Font 4",
+				"callback": ""
+			}				
+		]
 	},
 	"state_button": {
 		"title": "Bold"
-	}
+	},
+	"radio_buttons": [
+		{
+			"title": "Left",
+			"value": "left"
+		},
+		{
+			"title": "Middle",
+			"value": "middle"
+		},
+		{
+			"title": "Right",
+			"value": "right"
+		}
+	]
 }

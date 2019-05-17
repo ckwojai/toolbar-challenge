@@ -6,13 +6,19 @@
   4) A group of buttons that only allow one to be selected (E.G. left / center / right align)
   5) A button that links to another URL location
   6) Configurable by editing a JSON file
-
+* Resource
+  - [[https://ng-bootstrap.github.io/#/home][Angular Powered Bootstrap]]
+  - [[https://angular.io/tutorial][Angular Tour-of-Hero Tutorial]]
+  - [[https://getbootstrap.com/docs/4.3/getting-started/introduction/][Bootstrap 4 Documentation]]
+  - 
+  - 
 * Ideas
   1) Toolbar component, integrating bunch of umbrella smaller component satisfying the above requirements
   2) Toolbar component, with everything implemented in itself
   3) End results
   4) How generalize should it be? 
   5) Create library so everybody can use it
+  6) Need to brush up on Angular Databinding Syntax, [], (), [()]
 
 * Drop-down Selector
   - Let's start with Drop-down Selector
@@ -143,18 +149,18 @@
 	   #+LOCATION: state-button.component.ts
 	   #+begin_src typescript
 		 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-		 export class statebuttoncomponent implements oninit {
+		 export class StateButtonComponent implements OnInit {
+		   @Input() title: string;
+		   @Output() clicked = new EventEmitter<boolean>();
 		   state: boolean = false;
-		   @output() clicked = new eventemitter<boolean>();
-		   onselect(): void {
+		   onSelect(): void {
 			 console.log(this.state);
 			 this.clicked.emit(!this.state);
 		   }
-		 }
 	   #+end_src
     3) Configuration in Parent component
 	   #+begin_src typescript
-		 button_onclicked(button_state: boolean) {
+		 button_onClicked(button_state: boolean) {
 		   if (button_state) {
 			 console.log("button clicked");
 		   } else {
@@ -176,9 +182,51 @@
 	   #+end_src
     2) Adjust parent and child component accordingly to incorporate customization
 
-	
 ** Radio Buttons
 *** Goals   
+	1) Hardcode arbitrary Radio Buttons so that it appears on the page
+
+	2) Extract onClick() event to Parent (toolbar)
+	   
+	3) Implement configuration from Json, that controls the text on each radio buttons, and arbitrary# of them 
+*** Radio Buttons Hard Code
+	1) Copy code from [[https://ng-bootstrap.github.io/#/components/buttons/examples][Angular Bootstrap Radio Button]]
+	   #+begin_src typescript
+		 // In TS
+		 export class RadioButtonsComponent implements OnInit {
+		   model: any = 1;
+		   constructor() { }
+
+		   ngOnInit() {
+		   }
+		 // In HTML template
+		 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
+		   <label ngbButtonLabel class="btn-light">
+			 <input ngbButton type="radio" [value]="1"> Left (pre-checked)
+		   </label>
+		   <label ngbButtonLabel class="btn-light">
+			 <input ngbButton type="radio" value="middle"> Middle
+		   </label>
+		   <label ngbButtonLabel class="btn-light">
+			 <input ngbButton type="radio" [value]="false"> Right
+		   </label>
+		 </div>
+	   #+end_src
+*** Extract onClick event to Parent
+	
+*** Configuration from Json
+	1) Json structure design
+	   #+begin_src typescript
+{
+"radio-buttons": 
+[
+{
+"title": "Left",
+"value": "left"
+}
+]
+}
+	   #+end_src
 * Some key insights
   - Some criterion for Re-usable components?
 	1) Should consist mostly dumb components, with no application logic

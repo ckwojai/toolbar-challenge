@@ -1,11 +1,11 @@
 {
 	"extends": "../tsconfig.json",
-	"compileroptions": {
-		"outdir": "../out-tsc/app",
+	"compilerOptions": {
+		"outDir": "../out-tsc/app",
 		"types": [],
-		"resolvejsonmodule": true,
-		"esmoduleinterop": true,
-		"allowsyntheticdefaultimports": true
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true
 	},
 	"exclude": [
 		"test.ts",

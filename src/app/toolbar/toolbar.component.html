@@ -4,4 +4,6 @@
   </a>  
   <app-drop-down [title]="dropdown_config.title" [selectors]="dropdown_config.selectors"></app-drop-down>
   <app-state-button [title]="state_button_config.title" (clicked)="button_onClicked($event)"></app-state-button>
+  <app-radio-buttons [config]="radio_buttons_config" (clicked)="radio_onClicked($event)"></app-radio-buttons>
 </nav>
+

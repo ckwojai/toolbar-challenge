@@ -10,17 +10,21 @@ import * as config from './toolbar_config.json';
 export class ToolbarComponent implements OnInit {
   dropdown_config: any = config.dropdown;
   state_button_config: any = config.state_button;
-  constructor() {
-  }
-  button_onclicked(button_state: boolean) {
+  radio_buttons_config: any = config.radio_buttons;
+
+  button_onClicked(button_state: boolean) {
     if (button_state) {
       console.log("button clicked");
     } else {
       console.log("button unclicked");
     }
   }
-  ngOnInit() {
-    console.log(this.state_button_config);
+  radio_onClicked(value: string) {
+    console.log(value);
   }
-
+  constructor() {
+  }
+  ngOnInit() {
+    console.log();
+  }
 }

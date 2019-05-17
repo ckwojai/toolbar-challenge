@@ -9,7 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { StateButtonComponent } from './state-button/state-button.component';
 
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule } from '@angular/forms';
+import { RadioButtonsComponent } from './radio-buttons/radio-buttons.component'; // <-- NgModel lives here
 
 export class YourAppModule {
 }
@@ -18,7 +19,8 @@ export class YourAppModule {
     AppComponent,
     DropDownComponent,
     ToolbarComponent,
-    StateButtonComponent
+    StateButtonComponent,
+    RadioButtonsComponent
   ],
   imports: [
     FormsModule,
