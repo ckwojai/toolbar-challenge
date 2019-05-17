@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-url-button',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./url-button.component.css']
 })
 export class UrlButtonComponent implements OnInit {
+  @Input() config: any = { "title": "Link", "url": "https://google.com/" };
 
   constructor() { }
 

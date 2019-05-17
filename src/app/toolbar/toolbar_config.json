@@ -37,5 +37,9 @@
 			"title": "right",
 			"value": "right"
 		}
-	]
+	],
+	"url_button": {
+		"title": "My portfolio",
+		"url": "https://kinchang.com/"
+	}
 }

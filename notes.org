@@ -262,11 +262,29 @@
 	1) Create Component and Hardcode the link in
 	2) Implement configuration where it link to
 *** Hardcode button 
-	1) Use bootstrap button
+	1) Use bootstrap button and make url a variable
 	   #+begin_src typescript
-<a class="btn btn-primary" href="#" role="button">Link</a>
+		 @Input() url: string = "https://kinchang.com";
+		 <a class="btn btn-outline-dark" href={{url}} role="button">Link</a>
 	   #+end_src
-    2) Create variable where it link to
+    2) Json configuration
+	   1) Json structure
+		  #+begin_src typescript
+			{
+				"url_button": {
+					"title": "My portfolio",
+					"url": "https://kinchang.com/"
+				}
+			}
+		  #+end_src
+	   2) Pass it down to child
+		  #+begin_src typescript
+			url_button_config: any = config.url_button;
+			// In url-button ts
+			@Input() config: any = { "title": "Link", "url": "https://google.com/" };
+			// HTML template
+			<a class="btn btn-outline-dark" href={{config.url}} role="button">{{config.title}}</a>
+		  #+end_src
 * Some key insights
   - Some criterion for Re-usable components?
 	1) Should consist mostly dumb components, with no application logic

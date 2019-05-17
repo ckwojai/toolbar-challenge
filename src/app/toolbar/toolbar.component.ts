@@ -11,6 +11,7 @@ export class ToolbarComponent implements OnInit {
   dropdown_config: any = config.dropdown;
   state_button_config: any = config.state_button;
   radio_buttons_config: any = config.radio_buttons;
+  url_button_config: any = config.url_button;
 
   button_onClicked(button_state: boolean) {
     if (button_state) {
