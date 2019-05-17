@@ -6,12 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./drop-down.component.css']
 })
 export class DropDownComponent implements OnInit {
-  @Input() selectors: { text: string, callback: string }[];
-  @Input() title: string;
+  @Input() config: any;
   constructor() { }
-
   ngOnInit() {
-    console.log(this.selectors[0].text);
   }
 
 }

@@ -10,7 +10,6 @@ export class RadioButtonsComponent implements OnInit {
   @Output() clicked = new EventEmitter<string>();
   model: any;
   onClick(value: string): void {
-    console.log(value);
     this.clicked.emit(value);
   }
   constructor() { }
