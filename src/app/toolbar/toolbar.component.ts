@@ -1,6 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import * as config from './toolbar_config.json';
-import { EventEmitter } from 'protractor';
 
 
 @Component({
