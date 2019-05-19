@@ -27,6 +27,9 @@ export class ToolbarComponent implements OnInit {
   radio_onClicked(value: string) {
     console.log(value);
   }
+  dropDownEventHandler(value: string) {
+    console.log(value);
+  }
   constructor() {
   }
   ngOnInit() {

@@ -12,7 +12,7 @@
   - [[https://getbootstrap.com/docs/4.3/getting-started/introduction/][Bootstrap 4 Documentation]]
   - [[https://stackblitz.com/github/ckwojai/toolbar-challenge/tree/config_refactor][Stackblitz refactor_config branch]]
   - https://stackblitz.com/edit/github-tjfvrs-rwmi16
-  - 
+  - [[https://angular.io/guide/component-interaction#parent-listens-for-child-event][Angular Listen for Child Element]]
 
 * Ideas
   1) Toolbar component, integrating bunch of umbrella smaller component satisfying the above requirements
@@ -184,6 +184,8 @@
 	   #+end_src
     2) Adjust parent and child component accordingly to incorporate customization
 
+*** Extract DropdownEvent to be handled in toolbar (parent)
+	- Similar procedures as State-button or Radio
 ** Radio Buttons
 *** Goals   
 	1) Hardcode arbitrary Radio Buttons so that it appears on the page
