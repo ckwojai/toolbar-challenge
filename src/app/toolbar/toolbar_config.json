@@ -4,20 +4,16 @@
 		"selectors": 
 		[
 			{
-				"text": "Font 1",
-				"callback": ""
+				"text": "Font 1"
 			},
 			{
-				"text": "Font 2",
-				"callback": ""
+				"text": "Font 2"
 			},
 			{
-				"text": "Font 3",
-				"callback": ""
+				"text": "Font 3"
 			},
 			{
-				"text": "Font 4",
-				"callback": ""
+				"text": "Font 4"
 			}				
 		]
 	},

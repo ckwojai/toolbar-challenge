@@ -1,33 +1,43 @@
+* Deliverable
 * Requirement
   1) Reusable Toolbar Component
-	 - Toolbar meaning a navigation bar?
   2) Drop down selector (E.G. selecting a font)
   3) A button with state (E.G. a "Bold" button)
   4) A group of buttons that only allow one to be selected (E.G. left / center / right align)
   5) A button that links to another URL location
   6) Configurable by editing a JSON file
-* Resource
-  - [[https://ng-bootstrap.github.io/#/home][Angular Powered Bootstrap]]
-  - [[https://angular.io/tutorial][Angular Tour-of-Hero Tutorial]]
-  - [[https://getbootstrap.com/docs/4.3/getting-started/introduction/][Bootstrap 4 Documentation]]
-  - [[https://stackblitz.com/github/ckwojai/toolbar-challenge/tree/config_refactor][Stackblitz refactor_config branch]]
-  - https://stackblitz.com/edit/github-tjfvrs-rwmi16
-  - [[https://angular.io/guide/component-interaction#parent-listens-for-child-event][Angular Listen for Child Element]]
+  7) Ability to extend to act on the page down the line
+* Summary
+  - All required elements are grouped inside toolbar and displayed on the page properly, using components from [[https://ng-bootstrap.github.io/#/components/alert/examples][ngbootstrap]] [4/4][100%]
+	+ [X] Drop down, selector; under ./src/app/drop-down/
+	+ [X] Button with state; under ./src/app/state-button/
+	+ [X] Group of buttons that only allow one to be selected; under ./src/app/radio-buttons/
+	+ [X] Button that links to another URL location; under ./src/app/url-button/
+  - Configurable by edit a JSON file at ./src/app/toolbar/toolbar_config.json
+	+ dropdown
+	  1) .dropdown.title: text that display before clicking
+	  2) .dropdown.selectors: array of selectors to display after clicking
+	  3) .dropdown.selectors.text: text of selectors
+    + state_button
+	  1) .title: text display on the button
+	+ radio_buttons
+	  1) .radio_buttons: array of buttons to display in the button group
+	  2) .radio_buttons.title: text to display on the button
+	  3) .radio_buttons.value: value that get passed when clicked (default to .title for now)
+    + url_buttons
+	  1) .url_buttons.title: text to display on the button
+	  2) .url_buttons.url: url that the button links to
+  - Reusability
+	+ Json file should *only* store view information (what you can see), not any application logic
+	+ All the onClick event of the child components (dropdown, button, radio) are extracted onto parent components
+	  1) The above is accomplished using Angular's Output and EventEmitter
+	  2) Whenever components got clicked, a message will be sent from the parent (toolbar) to show control over the event on the higher level
+	+ Great usability because state and application logic can be configured in the toolbar component alone without touching any child components
+  - Extensibility
+	+ Since all onClick events can be configure in the top toolbar component, extending toolbar to act on the page is easy: just replace console.log line with code that wants executed
+	+ A demonstration on how toolbar can act on a sibling component: ./src/app/simple-text is implemented; text toggles bold whenever state-button is clicked.
 
-* Ideas
-  1) Toolbar component, integrating bunch of umbrella smaller component satisfying the above requirements
-  2) Toolbar component, with everything implemented in itself
-  3) End results
-  4) How generalize should it be? 
-  5) Create library so everybody can use it
-  6) Need to brush up on Angular Databinding Syntax, [], (), [()]
-
-* Drop-down Selector
-  - Let's start with Drop-down Selector
-  - 
-
-
-* Logs  
+* Logs
 ** Set up ng-boostrap
   1) Install ng-bootstrap
 	 #+begin_src shell
@@ -56,7 +66,7 @@
 	   #+begin_src css
 		 @import "~bootstrap/dist/css/bootstrap.css";
 	   #+end_src
-	   
+
 ** Navi + Drop-down Experiment
    1) Create drop-down component
    2) Copy and Paste html from ng-bootstrap [[https://ng-bootstrap.github.io/#/components/dropdown/examples][dropdown site]]
@@ -66,7 +76,7 @@
 ** Dropdown Customization
 *** Goal
    1) Aim is to customize the selectors inside Drop-down
-   2) Approach: @input or encode all customization in 
+   2) Approach: @input or encode all customization in
 *** @input approach (hard-coded)
 	1) Add @Input() in drop-down class & Use it in HTML template {{option}}
 	   #+begin_src typescript
@@ -83,7 +93,7 @@
 	   #+begin_src html
 		 <app-drop-down [selectors]="selectors"></app-drop-down>
 	   #+end_src
-	4) Add *ngFor to iterate through array in drop-down.html 
+	4) Add *ngFor to iterate through array in drop-down.html
 	   #+begin_src html
 		 <button *ngFor="let selector of selectors" ngbDropdownItem>{{selector}}</button>
 	   #+end_src
@@ -110,13 +120,13 @@
 	   #+end_src
     4) Adjust accordingly in drop-down component
 
-** State Button	
+** State Button
 *** Goal
 	1) Get clickable button on the page
 	2) Pass in onClick function from Parent (toolbar) for state change
 	   + For starter, a function that just shows pop up messages when clicked
 	3) configure.json that configure the button's display text (e.g. Bold / Italics)jjj
-*** Get button on page	   
+*** Get button on page
 	1) Add associated html template in button, copy from [[https://ng-bootstrap.github.io/#/components/buttons/examples][bootstrap Angular Site]]
 	   #+begin_src html
 		 <label class="btn-primary" ngbButtonLabel>
@@ -144,7 +154,7 @@
 	  // Add (click) directive in html template
 	  <input [(ngModel)]="state" (click)="onSelect()" type="checkbox" ngbButton> Bold
 	#+end_src
-	
+
 *** Extract click event to Parent Component, to make state-button "dumb"
 	1) Research and Learn EventEmitter and Output directive according to this [[https://angular.io/guide/component-interaction#parent-listens-for-child-event][Angular tutorial]]
 	2) Import EventEmitter & Output, then use them in child component
@@ -187,12 +197,12 @@
 *** Extract DropdownEvent to be handled in toolbar (parent)
 	- Similar procedures as State-button or Radio
 ** Radio Buttons
-*** Goals   
+*** Goals
 	1) Hardcode arbitrary Radio Buttons so that it appears on the page
 
 	2) Extract onClick() event to Parent (toolbar)
-	   
-	3) Implement configuration from Json, that controls the text on each radio buttons, and arbitrary# of them 
+
+	3) Implement configuration from Json, that controls the text on each radio buttons, and arbitrary# of them
 *** Radio Buttons Hard Code
 	1) Copy code from [[https://ng-bootstrap.github.io/#/components/buttons/examples][Angular Bootstrap Radio Button]]
 	   #+begin_src typescript
@@ -261,11 +271,11 @@
 			 }
 		 ]
 	   #+end_src
-** URL Button	   
-*** Goals   
+** URL Button
+*** Goals
 	1) Create Component and Hardcode the link in
 	2) Implement configuration where it link to
-*** Hardcode button 
+*** Hardcode button
 	1) Use bootstrap button and make url a variable
 	   #+begin_src typescript
 		 @Input() url: string = "https://kinchang.com";
@@ -290,7 +300,7 @@
 			<a class="btn btn-outline-dark" href={{config.url}} role="button">{{config.title}}</a>
 		  #+hend_src
 ** Create simple component, that can be changed by toolbar
-*** Goals   
+*** Goals
 	1) Demonstrate how toolbar can be used to act on sibling component in the app
 	2) Create a simple text area
 * Some key insights
@@ -305,4 +315,20 @@
 	   - Answers: configure.json should only be used for data-related configuration, no app logic should be included
     2) Action function should always be extract to the toolbar Parent component for easy configuration
 	   - Make most components as dumb as possible
-	   - Concentrate all the logics in the root component (Toolbar) 
+	   - Concentrate all the logics in the root component (Toolbar)
+* Resource
+  - [[https://ng-bootstrap.github.io/#/home][Angular Powered Bootstrap]]
+  - [[https://angular.io/tutorial][Angular Tour-of-Hero Tutorial]]
+  - [[https://getbootstrap.com/docs/4.3/getting-started/introduction/][Bootstrap 4 Documentation]]
+  - [[https://angular.io/guide/component-interaction#parent-listens-for-child-event][Angular Listen for Child Element]]
+** Stackblitz Deployment
+  - [[https://stackblitz.com/github/ckwojai/toolbar-challenge/tree/config_refactor][Stackblitz refactor_config branch]]
+  - https://stackblitz.com/edit/github-tjfvrs-rwmi16
+
+* Ideas
+  1) Toolbar component, integrating bunch of umbrella smaller component satisfying the above requirements
+  2) Toolbar component, with everything implemented in itself
+  3) End results
+  4) How generalize should it be?
+  5) Create library so everybody can use it
+  6) Need to brush up on Angular Databinding Syntax, [], (), [()]
