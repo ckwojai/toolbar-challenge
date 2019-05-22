@@ -15,14 +15,14 @@ export class ToolbarComponent implements OnInit {
   radio_buttons_config: any = config.radio_buttons;
   url_button_config: any = config.url_button;
 
+
   button_onClicked(button_state: boolean) {
     if (button_state) {
       console.log("button clicked");
-      this.bold_event.emit(button_state);
     } else {
       console.log("button unclicked");
-      this.bold_event.emit(button_state);
     }
+    this.bold_event.emit(button_state);
   }
   radio_onClicked(value: string) {
     console.log(value);
@@ -33,6 +33,5 @@ export class ToolbarComponent implements OnInit {
   constructor() {
   }
   ngOnInit() {
-    console.log();
   }
 }

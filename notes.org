@@ -304,6 +304,17 @@
 *** Goals
 	1) Demonstrate how toolbar can be used to act on sibling component in the app
 	2) Create a simple text area
+* Feedback
+** Problems
+   1) Repeating code in if-else statement; [[file:src/app/toolbar/toolbar.component.ts::button_onClicked(button_state:%20boolean)%20{][toolbar.component.ts]]
+   2) Using camelCase in place of snake_case project-wide
+   3) Module reuse with [[NgSwitch][NgSwitch]] in toolbar.component.html
+   4) Remove all console.log debug codes project-wide
+   5) Read [[https://angular.io/guide/styleguide][Angular Style Guide]]
+** Correction Logs
+*** Problem 1
+
+
 * Some key insights
   - Some criterion for Re-usable components?
 	1) Should consist mostly dumb components, with no application logic
