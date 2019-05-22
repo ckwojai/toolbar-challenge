@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import * as items from './toolbarItems.json';
+import configJson from './toolbarConfig.json';
 
 
 @Component({
@@ -10,12 +10,7 @@ import * as items from './toolbarItems.json';
 export class ToolbarComponent implements OnInit {
   @Output() boldEvent = new EventEmitter<boolean>();
   @Output() italicizedEvent = new EventEmitter<boolean>();
-  items: any = items.default;
-  // configDropDown: any = config.dropdown;
-  // configStateButton: any = config.stateButton;
-  // configRadioButtons: any = config.radioButtons;
-  // configUrlButton: any = config.urlButton;
-
+  items: any = configJson.toolbarItems;
 
   onButtonClick(buttonState: boolean, item: any) {
     console.log("state button got clicked");
@@ -40,6 +35,6 @@ export class ToolbarComponent implements OnInit {
   constructor() {
   }
   ngOnInit() {
-    console.log(items);
+    console.log(this.items);
   }
 }

@@ -330,7 +330,65 @@
 	2) Most changes are made in toolbar.component.ts/html
 	3) Minor changes are made in toolbar's child components
 	4) Also refactor some naming convention for @Output() and EventHandler
-*** Problem 3:
+*** Problem 3
+	1) Redesign json configure file; add "type" properties
+	   #+begin_src typescript
+  {
+	  "toolbarItems": [
+		  {
+			  "type": "urlButton",
+			  "config": {
+				  "title": "Stackblitz Editor",
+				  "url": "https://google.com/"
+			  }
+		  }
+  ...
+  }
+	   #+end_src
+	2) Add [ngSwitch] and *ngSwitchCase in toolbar.component.html template
+	   #+begin_src html
+<ng-container *ngFor="let item of items" [ngSwitch]="item.type">
+  <app-drop-down
+	*ngSwitchCase="'dropDown'"
+	[config]="item.config"
+	(onClickEvent)="onDropDownClick($event, item)">
+  </app-drop-down>
+  <app-state-button
+	*ngSwitchCase="'stateButton'"
+	[config]="item.config"
+	(onClickEvent)="onButtonClick($event, item)">
+  </app-state-button>
+  <app-radio-buttons
+	*ngSwitchCase="'radioButtons'"
+	[config]="item.config"
+	(onClickEvent)="onRadioClick($event, item)">
+  </app-radio-buttons>
+  <app-url-button
+	*ngSwitchCase="'urlButton'"
+	[config]="item.config">
+  </app-url-button>
+</ng-container>
+	   #+end_src
+	3) onClick Event Handler will take an extra parameter "item"; so that we know which element is clicked
+    4) The above is demonstrated by adding another state-button "Italicized"
+	   #+begin_src typescript
+  onButtonClick(buttonState: boolean, item: any) {
+    console.log("state button got clicked");
+    console.log(item.config.title);
+    switch (item.config.title) {
+      case "bold":
+        console.log("inside bold event emitter");
+        this.boldEvent.emit(buttonState);
+        break;
+      case "italicized":
+        console.log("inside ital event emitter");
+        this.italicizedEvent.emit(buttonState);
+    }
+    console.log(item.config.title);
+  }
+
+	   #+end_src
+*** Problem 4
 * Some key insights
   - Some criterion for Re-usable components?
 	1) Should consist mostly dumb components, with no application logic
