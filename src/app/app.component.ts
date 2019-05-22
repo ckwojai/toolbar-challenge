@@ -10,11 +10,8 @@ export class AppComponent {
   public italicized: boolean = false;
   onBoldEvent(bold: boolean) {
     this.bold = bold;
-    // console.log(this.bold);
-    // console.log(this.italicized);
   }
   onItalicizedEvent(italicized: boolean) {
-    console.log("inside italicizedEvent handler");
     this.italicized = italicized;
   }
 

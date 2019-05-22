@@ -13,28 +13,23 @@ export class ToolbarComponent implements OnInit {
   items: any = configJson.toolbarItems;
 
   onButtonClick(buttonState: boolean, item: any) {
-    console.log("state button got clicked");
-    console.log(item.config.title);
+    // Demonstration how this function can be configured to act on sibling component "simple-text"
     switch (item.config.title) {
       case "bold":
-        console.log("inside bold event emitter");
         this.boldEvent.emit(buttonState);
         break;
       case "italicized":
-        console.log("inside ital event emitter");
         this.italicizedEvent.emit(buttonState);
     }
-    console.log(item.config.title);
   }
   onRadioClick(value: string, item: any) {
-    console.log(value);
+    // Code can be implemnted below for toolbar to act on the page upon Radio Butons click
   }
   onDropDownClick(value: string, item: any) {
-    console.log(value);
+    // Code can be implemnted below for toolbar to act on the page upon Dropdow Butons click
   }
   constructor() {
   }
   ngOnInit() {
-    console.log(this.items);
   }
 }
