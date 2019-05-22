@@ -7,10 +7,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class RadioButtonsComponent implements OnInit {
   @Input() config: any;
-  @Output() clicked = new EventEmitter<string>();
+  @Output() onClickEvent = new EventEmitter<string>();
   model: any;
   onClick(value: string): void {
-    this.clicked.emit(value);
+    this.onClickEvent.emit(value);
   }
   constructor() { }
 

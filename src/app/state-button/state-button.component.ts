@@ -7,11 +7,11 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 })
 export class StateButtonComponent implements OnInit {
   @Input() config: any;
-  @Output() clicked = new EventEmitter<boolean>();
+  @Output() onClickEvent = new EventEmitter<boolean>();
   state: boolean = false;
   onSelect(): void {
     console.log(this.state);
-    this.clicked.emit(!this.state);
+    this.onClickEvent.emit(!this.state);
   }
   constructor() { }
 

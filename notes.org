@@ -312,8 +312,24 @@
    4) Remove all console.log debug codes project-wide
    5) Read [[https://angular.io/guide/styleguide][Angular Style Guide]]
 ** Correction Logs
-*** Problem 1
+*** Problem 1: Move .emit call out of if-else scope
+#+begin_src typescript
+  button_onClicked(button_state: boolean) {
+    if (button_state) {
+      console.log("button clicked");
+    } else {
+      console.log("button unclicked");
+    }
+    this.bold_event.emit(button_state);
+  }
+#+end_src
+	Removing
 
+*** Problem 2: Use camelCase instead of snake_case project-wide
+	1) configToolbar.json file
+	2) Most changes are made in toolbar.component.ts/html
+	3) Minor changes are made in toolbar's child components
+	4) Also refactor some naming convention for @Output() and EventHandler
 
 * Some key insights
   - Some criterion for Re-usable components?

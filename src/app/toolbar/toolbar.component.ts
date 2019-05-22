@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import * as config from './toolbar_config.json';
+import * as config from './toolbarConfig.json';
 
 
 @Component({
@@ -8,26 +8,26 @@ import * as config from './toolbar_config.json';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  @Output() bold_event = new EventEmitter<boolean>();
+  @Output() boldEvent = new EventEmitter<boolean>();
 
-  dropdown_config: any = config.dropdown;
-  state_button_config: any = config.state_button;
-  radio_buttons_config: any = config.radio_buttons;
-  url_button_config: any = config.url_button;
+  configDropDown: any = config.dropdown;
+  configStateButton: any = config.stateButton;
+  configRadioButtons: any = config.radioButtons;
+  configUrlButton: any = config.urlButton;
 
 
-  button_onClicked(button_state: boolean) {
-    if (button_state) {
+  onButtonClick(buttonState: boolean) {
+    if (buttonState) {
       console.log("button clicked");
     } else {
       console.log("button unclicked");
     }
-    this.bold_event.emit(button_state);
+    this.boldEvent.emit(buttonState);
   }
-  radio_onClicked(value: string) {
+  onRadioClick(value: string) {
     console.log(value);
   }
-  dropDownEventHandler(value: string) {
+  onDropDownClick(value: string) {
     console.log(value);
   }
   constructor() {

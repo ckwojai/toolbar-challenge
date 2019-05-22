@@ -1,7 +1,7 @@
 {
 	"dropdown": {
 		"title": "Select Font",
-		"selectors": 
+		"selectors":
 		[
 			{
 				"text": "Font 1"
@@ -14,13 +14,13 @@
 			},
 			{
 				"text": "Font 4"
-			}				
+			}
 		]
 	},
-	"state_button": {
+	"stateButton": {
 		"title": "Bold"
 	},
-	"radio_buttons": [
+	"radioButtons": [
 		{
 			"title": "left",
 			"value": "left"
@@ -34,7 +34,7 @@
 			"value": "right"
 		}
 	],
-	"url_button": {
+	"urlButton": {
 		"title": "My portfolio",
 		"url": "https://kinchang.com/"
 	}
