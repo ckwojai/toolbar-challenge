@@ -1,6 +1,6 @@
 * Deliverable
-  - Edit: https://stackblitz.com/edit/github-tefdaa
-  - Page: [[https://github-tefdaa.stackblitz.io]]
+  - Edit: [[https://stackblitz.com/edit/github-p2m7fm]]
+  - Page: [[https://github-p2m7fm.stackblitz.io]]
 * Requirement
   1) Reusable Toolbar Component
   2) Drop down selector (E.G. selecting a font)

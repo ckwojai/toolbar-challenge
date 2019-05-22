@@ -1,6 +1,6 @@
 * Deliverable
-  - Edit: https://stackblitz.com/edit/github-tefdaa
-  - Page: [[https://github-tefdaa.stackblitz.io]]
+  - Edit: [[https://stackblitz.com/edit/github-p2m7fm]]
+  - Page: [[https://github-p2m7fm.stackblitz.io]]
 * Requirement
   1) Reusable Toolbar Component
   2) Drop down selector (E.G. selecting a font)
@@ -10,34 +10,123 @@
   6) Configurable by editing a JSON file
   7) Ability to extend to act on the page down the line
 * Summary
-** All required elements are grouped inside toolbar and displayed on the page properly, using components from [[https://ng-bootstrap.github.io/#/components/alert/examples][ngbootstrap]] [4/4][100%]
+  - All required elements are grouped inside toolbar and displayed on the page properly, using components from [[https://ng-bootstrap.github.io/#/components/alert/examples][ngbootstrap]] [4/4][100%]
 	+ [X] Drop down, selector; under ./src/app/drop-down/
 	+ [X] Button with state; under ./src/app/state-button/
 	+ [X] Group of buttons that only allow one to be selected; under ./src/app/radio-buttons/
 	+ [X] Button that links to another URL location; under ./src/app/url-button/
-** Configurable by edit a JSON file at ./src/app/toolbar/toolbar_config.json
-	+ dropdown
-	  1) .dropdown.title: text that display before clicking
-	  2) .dropdown.selectors: array of selectors to display after clicking
-	  3) .dropdown.selectors.text: text of selectors
-    + state_button
+  - Configurable by edit a JSON file at ./src/app/toolbar/toolbarConfig.json
+	+ dropDown
+	  1) .dropDown.title: text that display before clicking
+	  2) .dropDown.selectors: array of selectors to display after clicking
+	  3) .dropDown.selectors.text: text of selectors
+    + stateButton
 	  1) .title: text display on the button
-	+ radio_buttons
-	  1) .radio_buttons: array of buttons to display in the button group
-	  2) .radio_buttons.title: text to display on the button
-	  3) .radio_buttons.value: value that get passed when clicked (default to .title for now)
-    + url_buttons
-	  1) .url_buttons.title: text to display on the button
-	  2) .url_buttons.url: url that the button links to
-** Reusability
+	+ radioButtons
+	  1) .radioButtons: array of buttons to display in the button group
+	  2) .radioButtons.title: text to display on the button
+	  3) .radioButtons.value: value that get passed when clicked (default to .title for now)
+    + urlButtons
+	  1) .urlButtons.title: text to display on the button
+	  2) .urlButtons.url: url that the button links to
+  - Ability to add more than one of each kind of child component
+	+ Add another array element inside toolbarItems inside toolbarConfig.json
+	+ Toolbar HTML template will use [ngSwitch] and *ngSwitchCase to render all the elements in toolbar as specified in config
+	+ This capability is demonstrated by the two state-buttons that toggles bold/italicized; or the two url-buttons that link to different places.
+  - Reusability
 	+ Json file should *only* store view information (what you can see), not any application logic
 	+ All the onClick event of the child components (dropdown, button, radio) are extracted onto parent components
 	  1) The above is accomplished using Angular's Output and EventEmitter
 	  2) Whenever components got clicked, a message will be sent from the parent (toolbar) to show control over the event on the higher level
 	+ Great usability because state and application logic can be configured in the toolbar component alone without touching any child components
-** Extensibility
+  - Extensibility
 	+ Since all onClick events can be configure in the top toolbar component, extending toolbar to act on the page is easy: just replace console.log line with code that wants executed
-	+ A demonstration on how toolbar can act on a sibling component: ./src/app/simple-text is implemented; text toggles bold whenever state-button is clicked.
+	+ Demonstrated by how toolbar can act on a sibling component: ./src/app/simple-text; text toggles bold/italicized whenever corresponding state-button is clicked.
+* Improvements
+** Problems
+   1) Repeating code in if-else statement; [[file:src/app/toolbar/toolbar.component.ts::button_onClicked(button_state:%20boolean)%20{][toolbar.component.ts]]
+   2) Using camelCase in place of snake_case project-wide
+   3) Module reuse with [[https://angular.io/api/common/NgSwitch][NgSwitch]] in toolbar.component.html
+   4) Remove all console.log debug codes project-wide
+   5) Read [[https://angular.io/guide/styleguide][Angular Style Guide]]
+** Correction Logs
+*** Problem 1: Move .emit call out of if-else scope
+#+begin_src typescript
+  button_onClicked(button_state: boolean) {
+    if (button_state) {
+      console.log("button clicked");
+    } else {
+      console.log("button unclicked");
+    }
+    this.bold_event.emit(button_state);
+  }
+#+end_src
+	Removing
+
+*** Problem 2: Use camelCase instead of snake_case project-wide
+	1) configToolbar.json file
+	2) Most changes are made in toolbar.component.ts/html
+	3) Minor changes are made in toolbar's child components
+	4) Also refactor some naming convention for @Output() and EventHandler
+*** Problem 3: A way to add more than one of each kind of element.
+	1) Redesign json configure file; add "type" properties
+	   #+begin_src typescript
+  {
+	  "toolbarItems": [
+		  {
+			  "type": "urlButton",
+			  "config": {
+				  "title": "Stackblitz Editor",
+				  "url": "https://google.com/"
+			  }
+		  }
+  ...
+  }
+	   #+end_src
+	2) Add [ngSwitch] and *ngSwitchCase in toolbar.component.html template
+	   #+begin_src html
+<ng-container *ngFor="let item of items" [ngSwitch]="item.type">
+  <app-drop-down
+	*ngSwitchCase="'dropDown'"
+	[config]="item.config"
+	(onClickEvent)="onDropDownClick($event, item)">
+  </app-drop-down>
+  <app-state-button
+	*ngSwitchCase="'stateButton'"
+	[config]="item.config"
+	(onClickEvent)="onButtonClick($event, item)">
+  </app-state-button>
+  <app-radio-buttons
+	*ngSwitchCase="'radioButtons'"
+	[config]="item.config"
+	(onClickEvent)="onRadioClick($event, item)">
+  </app-radio-buttons>
+  <app-url-button
+	*ngSwitchCase="'urlButton'"
+	[config]="item.config">
+  </app-url-button>
+</ng-container>
+	   #+end_src
+	3) onClick Event Handler will take an extra parameter "item"; so that we know which element is clicked
+    4) The above is demonstrated by adding another state-button "Italicized"
+	   #+begin_src typescript
+  onButtonClick(buttonState: boolean, item: any) {
+    console.log("state button got clicked");
+    console.log(item.config.title);
+    switch (item.config.title) {
+      case "bold":
+        console.log("inside bold event emitter");
+        this.boldEvent.emit(buttonState);
+        break;
+      case "italicized":
+        console.log("inside ital event emitter");
+        this.italicizedEvent.emit(buttonState);
+    }
+    console.log(item.config.title);
+  }
+
+	   #+end_src
+*** Problem 4: Delete all console.log
 * Logs
 ** Set up ng-boostrap
   1) Install ng-bootstrap
@@ -298,7 +387,7 @@
 			// In url-button ts
 			@Input() config: any = { "title": "Link", "url": "https://google.com/" };
 			// HTML template
-            <a class="btn btn-outline-dark" href={{config.url}} role="button">{{config.title}}</a>
+			<a class="btn btn-outline-dark" href={{config.url}} role="button">{{config.title}}</a>
 		  #+end_src
 ** Create simple component, that can be changed by toolbar
 *** Goals
