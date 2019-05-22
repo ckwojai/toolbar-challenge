@@ -10,12 +10,12 @@
   6) Configurable by editing a JSON file
   7) Ability to extend to act on the page down the line
 * Summary
-  - All required elements are grouped inside toolbar and displayed on the page properly, using components from [[https://ng-bootstrap.github.io/#/components/alert/examples][ngbootstrap]] [4/4][100%]
+** All required elements are grouped inside toolbar and displayed on the page properly, using components from [[https://ng-bootstrap.github.io/#/components/alert/examples][ngbootstrap]] [4/4][100%]
 	+ [X] Drop down, selector; under ./src/app/drop-down/
 	+ [X] Button with state; under ./src/app/state-button/
 	+ [X] Group of buttons that only allow one to be selected; under ./src/app/radio-buttons/
 	+ [X] Button that links to another URL location; under ./src/app/url-button/
-  - Configurable by edit a JSON file at ./src/app/toolbar/toolbarConfig.json
+** Configurable by edit a JSON file at ./src/app/toolbar/toolbarConfig.json
 	+ dropDown
 	  1) .dropDown.title: text that display before clicking
 	  2) .dropDown.selectors: array of selectors to display after clicking
@@ -29,17 +29,17 @@
     + urlButtons
 	  1) .urlButtons.title: text to display on the button
 	  2) .urlButtons.url: url that the button links to
-  - Ability to add more than one of each kind of child component
+** Ability to add more than one of each kind of child component
 	+ Add another array element inside toolbarItems inside toolbarConfig.json
 	+ Toolbar HTML template will use [ngSwitch] and *ngSwitchCase to render all the elements in toolbar as specified in config
 	+ This capability is demonstrated by the two state-buttons that toggles bold/italicized; or the two url-buttons that link to different places.
-  - Reusability
+** Reusability
 	+ Json file should *only* store view information (what you can see), not any application logic
 	+ All the onClick event of the child components (dropdown, button, radio) are extracted onto parent components
 	  1) The above is accomplished using Angular's Output and EventEmitter
 	  2) Whenever components got clicked, a message will be sent from the parent (toolbar) to show control over the event on the higher level
 	+ Great usability because state and application logic can be configured in the toolbar component alone without touching any child components
-  - Extensibility
+** Extensibility
 	+ Since all onClick events can be configure in the top toolbar component, extending toolbar to act on the page is easy: just replace console.log line with code that wants executed
 	+ Demonstrated by how toolbar can act on a sibling component: ./src/app/simple-text; text toggles bold/italicized whenever corresponding state-button is clicked.
 * Improvements
