@@ -10,7 +10,6 @@ export class StateButtonComponent implements OnInit {
   @Output() onClickEvent = new EventEmitter<boolean>();
   state: boolean = false;
   onSelect(): void {
-    console.log(this.state);
     this.onClickEvent.emit(!this.state);
   }
   constructor() { }

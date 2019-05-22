@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SimpleTextComponent implements OnInit {
   @Input() bold: boolean = false;
+  @Input() italicized: boolean = false;
   constructor() { }
 
   ngOnInit() {

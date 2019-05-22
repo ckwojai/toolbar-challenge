@@ -1,3 +1,4 @@
 Welcome to {{ title }}!
-<app-toolbar (boldEvent)="onBoldEvent($event)"></app-toolbar>
-<app-simple-text [bold]="bold"></app-simple-text>
+<app-toolbar (boldEvent)="onBoldEvent($event)"
+			 (italicizedEvent)="onItalicizedEvent($event)" ></app-toolbar>
+<app-simple-text [bold]="bold" [italicized]="italicized"></app-simple-text>

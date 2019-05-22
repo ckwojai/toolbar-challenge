@@ -2,8 +2,25 @@
   <a class="navbar-brand" href="#">
 	Toolbar
   </a>
-  <app-drop-down [config]="configDropDown" (onClickEvent)="onDropDownClick($event)"></app-drop-down>
-  <app-state-button [config]="configStateButton" (onClickEvent)="onButtonClick($event)"></app-state-button>
-  <app-radio-buttons [config]="configRadioButtons" (onClickEvent)="onRadioClick($event)"></app-radio-buttons>
-  <app-url-button [config]="configUrlButton"></app-url-button>
+<ng-container *ngFor="let item of items" [ngSwitch]="item.type">
+  <app-drop-down
+	*ngSwitchCase="'dropDown'"
+	[config]="item.config"
+	(onClickEvent)="onDropDownClick($event, item)">
+  </app-drop-down>
+  <app-state-button
+	*ngSwitchCase="'stateButton'"
+	[config]="item.config"
+	(onClickEvent)="onButtonClick($event, item)">
+  </app-state-button>
+  <app-radio-buttons
+	*ngSwitchCase="'radioButtons'"
+	[config]="item.config"
+	(onClickEvent)="onRadioClick($event, item)">
+  </app-radio-buttons>
+  <app-url-button
+	*ngSwitchCase="'urlButton'"
+	[config]="item.config">
+  </app-url-button>
+</ng-container>
 </nav>
