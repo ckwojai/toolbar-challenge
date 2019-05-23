@@ -1,29 +1,26 @@
 {
 	"toolbarItems": [
 		{
-			"type": "urlButton",
-			"config": {
-				"title": "Stackblitz Editor",
-				"url": "https://google.com/"
-			}
-		},
-		{
 			"type": "dropDown",
 			"config": {
 				"title": "Select Font",
 				"selectors":
 				[
 					{
-						"text": "Font 1"
+						"text": "Font 1",
+						"value": "Font 1"
 					},
 					{
-						"text": "Font 2"
+						"text": "Font 2",
+						"value": "Font 2"
 					},
 					{
-						"text": "Font 3"
+						"text": "Font 3",
+						"value": "Font 3"
 					},
 					{
-						"text": "Font 4"
+						"text": "Font 4",
+						"value": "Font 4"
 					}
 				]
 			}
@@ -31,36 +28,64 @@
 		{
 			"type": "stateButton",
 			"config": {
-				"title": "italicized"
+				"title": "bold",
+				"value": "bold",
+				"img": "bold-text.svg"
 			}
 		},
 		{
 			"type": "stateButton",
 			"config": {
-				"title": "bold"
+				"title": "italicized",
+				"value": "italicized",
+				"img": "italicize-text.svg"
+			}
+		},
+		{
+			"type": "stateButton",
+			"config": {
+				"title": "underline",
+				"value": "underline",
+				"img": "underline-text.svg"
 			}
 		},
 		{
 			"type": "radioButtons",
 			"config": [
 				{
+					"img": "align-left.svg",
 					"title": "left",
 					"value": "left"
 				},
 				{
+					"img": "align-middle.svg",
 					"title": "middle",
 					"value": "middle"
 				},
 				{
+					"img": "align-right.svg",
 					"title": "right",
 					"value": "right"
+				},
+				{
+					"img": "align-justify.svg",
+					"title": "justify",
+					"value": "justify"
 				}
 			]
 		},
 		{
 			"type": "urlButton",
 			"config": {
-				"title": "My portfolio",
+				"title": "Stackblitz Editor",
+				"url": "https://google.com/"
+			}
+		},
+
+		{
+			"type": "urlButton",
+			"config": {
+				"title": "My Portfolio",
 				"url": "https://kinchang.com/"
 			}
 		}

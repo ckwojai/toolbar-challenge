@@ -1,3 +1,5 @@
-<label class="btn-success" ngbButtonLabel>
-  <input [(ngModel)]="state" (click)="onSelect()" type="checkbox" ngbButton> {{config.title}}
-</label>
+<span class="btn-group btn-group-toggle">
+	<label class="btn-outline-secondary" ngbButtonLabel>
+	  <input type="checkbox" [(ngModel)]="state" (click)="onSelect()"  ngbButton> <img src="../../assets/img/{{config.img}}" class="text-option">
+  </label>
+</span>

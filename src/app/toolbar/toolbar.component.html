@@ -1,26 +1,38 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-dark bg-dark text-left navbar-expand-md">
   <a class="navbar-brand" href="#">
 	Toolbar
   </a>
-<ng-container *ngFor="let item of items" [ngSwitch]="item.type">
-  <app-drop-down
-	*ngSwitchCase="'dropDown'"
-	[config]="item.config"
-	(onClickEvent)="onDropDownClick($event, item)">
-  </app-drop-down>
-  <app-state-button
-	*ngSwitchCase="'stateButton'"
-	[config]="item.config"
-	(onClickEvent)="onButtonClick($event, item)">
-  </app-state-button>
-  <app-radio-buttons
-	*ngSwitchCase="'radioButtons'"
-	[config]="item.config"
-	(onClickEvent)="onRadioClick($event, item)">
-  </app-radio-buttons>
-  <app-url-button
-	*ngSwitchCase="'urlButton'"
-	[config]="item.config">
-  </app-url-button>
-</ng-container>
+  <div class="navbar-nav mr-auto">
+	<ng-container *ngFor="let item of items" [ngSwitch]="item.type">
+	  <app-drop-down
+		*ngSwitchCase="'dropDown'"
+		[config]="item.config"
+		(onClickEvent)="onDropDownClick($event, item)">
+	  </app-drop-down>
+	</ng-container>
+	<div class="btn-group btn-group-toggle">
+	  <ng-container *ngFor="let item of items" [ngSwitch]="item.type">
+		<app-state-button
+		  *ngSwitchCase="'stateButton'"
+		  [config]="item.config"
+		  (onClickEvent)="onButtonClick($event, item)">
+		</app-state-button>
+	  </ng-container>
+	</div>
+	<ng-container *ngFor="let item of items" [ngSwitch]="item.type">
+	  <app-radio-buttons
+		*ngSwitchCase="'radioButtons'"
+					   [config]="item.config"
+					   (onClickEvent)="onRadioClick($event, item)">
+	  </app-radio-buttons>
+	</ng-container>
+  </div>
+  <div class="navbar-nav ml-auto">
+	<ng-container *ngFor="let item of items" [ngSwitch]="item.type">
+	  <app-url-button
+		*ngSwitchCase="'urlButton'"
+		[config]="item.config">
+	  </app-url-button>
+	</ng-container>
+  </div>
 </nav>
