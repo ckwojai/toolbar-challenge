@@ -1,3 +1,23 @@
+* Table of Contents                                                   :TOC_2:
+- [[#deliverable][Deliverable]]
+- [[#requirements][Requirements]]
+- [[#summary][Summary]]
+  - [[#required-elements-are-grouped-inside-toolbar-using-components-from-ngbootstrap-44100][Required elements are grouped inside toolbar using components from ngbootstrap]]
+  - [[#configurable-by-edit-a-json-file-at-srcapptoolbartoolbarconfigjson][Configurable by edit a JSON file at ./src/app/toolbar/toolbarConfig.json]]
+  - [[#ability-to-add-more-than-one-of-each-kind-of-child-component][Ability to add more than one of each kind of child component]]
+  - [[#reusability][Reusability]]
+  - [[#extensibility][Extensibility]]
+  - [[#ui-design][UI Design]]
+- [[#logs][Logs]]
+  - [[#set-up-ng-boostrap][Set up ng-boostrap]]
+  - [[#navi--drop-down-experiment][Navi + Drop-down Experiment]]
+  - [[#dropdown-customization][Dropdown Customization]]
+  - [[#state-button][State Button]]
+  - [[#radio-buttons][Radio Buttons]]
+  - [[#url-button][URL Button]]
+  - [[#create-simple-component-that-can-be-changed-by-toolbar][Create simple component, that can be changed by toolbar]]
+  - [[#a-way-to-add-more-than-one-of-each-kind-of-element][A way to add more than one of each kind of element.]]
+
 * Deliverable
   - Edit: [[https://stackblitz.com/edit/github-j919lp]]
   - Page: [[https://github-j919lp.stackblitz.io]]
