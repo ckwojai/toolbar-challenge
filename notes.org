@@ -1,6 +1,5 @@
 * Deliverable
-  - Edit: [[https://stackblitz.com/edit/github-j919lp]]
-  - Page: [[https://github-j919lp.stackblitz.io]]
+  - Edit: [[https://stackblitz.com/edit/github-wgdnbn]]
 * Requirement
   1) Reusable Toolbar Component
   2) Drop down selector (E.G. selecting a font)
@@ -418,10 +417,10 @@
   - [[https://getbootstrap.com/docs/4.3/getting-started/introduction/][Bootstrap 4 Documentation]]
   - [[https://angular.io/guide/component-interaction#parent-listens-for-child-event][Angular Listen for Child Element]]
 ** Stackblitz Deployment
+  - stackblitz.com/github/{GH_USERNAME}/{REPO_NAME}
   - [[https://stackblitz.com/github/ckwojai/toolbar-challenge/tree/config_refactor][Stackblitz refactor_config branch]]
   - https://stackblitz.com/edit/github-tjfvrs-rwmi16
   - [[https://stackblitz.com/edit/github-tefdaa][Stackblitz Master Branch]]
-  -
 
 * Ideas
   1) Toolbar component, integrating bunch of umbrella smaller component satisfying the above requirements

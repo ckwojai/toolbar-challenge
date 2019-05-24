@@ -1,6 +1,6 @@
 * Deliverable
-  - Edit: [[https://stackblitz.com/edit/github-j919lp]]
-  - Page: [[https://github-j919lp.stackblitz.io]]
+  - Edit: [[https://stackblitz.com/edit/github-wgdnbn]]
+  - Page: [[https://github-wgdnbn.stackblitz.io]]
 * Table of Contents                                                   :TOC_2:
 - [[#deliverable][Deliverable]]
 - [[#requirements][Requirements]]
