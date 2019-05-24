@@ -1,3 +1,6 @@
+* Deliverable
+  - Edit: [[https://stackblitz.com/edit/github-j919lp]]
+  - Page: [[https://github-j919lp.stackblitz.io]]
 * Table of Contents                                                   :TOC_2:
 - [[#deliverable][Deliverable]]
 - [[#requirements][Requirements]]
@@ -18,9 +21,6 @@
   - [[#create-simple-component-that-can-be-changed-by-toolbar][Create simple component, that can be changed by toolbar]]
   - [[#a-way-to-add-more-than-one-of-each-kind-of-element][A way to add more than one of each kind of element.]]
 
-* Deliverable
-  - Edit: [[https://stackblitz.com/edit/github-j919lp]]
-  - Page: [[https://github-j919lp.stackblitz.io]]
 * Requirements
   1) Reusable Toolbar Component
   2) Drop down selector (E.G. selecting a font)
