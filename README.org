@@ -16,17 +16,17 @@
 	+ [X] Group of buttons that only allow one to be selected; under ./src/app/radio-buttons/
 	+ [X] Button that links to another URL location; under ./src/app/url-button/
 ** Configurable by edit a JSON file at ./src/app/toolbar/toolbarConfig.json
-	+ dropDown
+*** dropDown
 	  1) .dropDown.title: text that display before clicking
 	  2) .dropDown.selectors: array of selectors to display after clicking
 	  3) .dropDown.selectors.text: text of selectors
-    + stateButton
+*** stateButton
 	  1) .title: text display on the button
-	+ radioButtons
+*** radioButtons
 	  1) .radioButtons: array of buttons to display in the button group
 	  2) .radioButtons.title: text to display on the button
 	  3) .radioButtons.value: value that get passed when clicked (default to .title for now)
-    + urlButtons
+*** urlButtons
 	  1) .urlButtons.title: text to display on the button
 	  2) .urlButtons.url: url that the button links to
 ** Ability to add more than one of each kind of child component
