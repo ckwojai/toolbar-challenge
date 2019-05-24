@@ -10,7 +10,7 @@
   6) Configurable by editing a JSON file
   7) Ability to extend to act on the page down the line
 * Summary
-** All required elements are grouped inside toolbar and displayed on the page properly, using components from [[https://ng-bootstrap.github.io/#/components/alert/examples][ngbootstrap]] [4/4][100%]
+** Required elements are grouped inside toolbar using components from [[https://ng-bootstrap.github.io/#/components/alert/examples][ngbootstrap]] [4/4][100%]
 	+ [X] Drop down, selector; under ./src/app/drop-down/
 	+ [X] Button with state; under ./src/app/state-button/
 	+ [X] Group of buttons that only allow one to be selected; under ./src/app/radio-buttons/
@@ -30,9 +30,9 @@
 	  1) .urlButtons.title: text to display on the button
 	  2) .urlButtons.url: url that the button links to
 ** Ability to add more than one of each kind of child component
-	+ Add another array element inside toolbarItems inside toolbarConfig.json
+    + Make toolbarItems inside toolbarConfig.json an array; each array element has two members: type of element and element config
 	+ Toolbar HTML template will use [ngSwitch] and *ngSwitchCase to render all the elements in toolbar as specified in config
-	+ This capability is demonstrated by the two state-buttons that toggles bold/italicized; or the two url-buttons that link to different places.
+	+ This capability is demonstrated by the two state-buttons that toggles bold/italicized; or the two url-buttons that links to different places.
 ** Reusability
 	+ Json file should *only* store view information (what you can see), not any application logic
 	+ All the onClick event of the child components (dropdown, button, radio) are extracted onto parent components
@@ -42,6 +42,12 @@
 ** Extensibility
 	+ Since all onClick events can be configure in the top toolbar component, extending toolbar to act on the page is easy: just replace console.log line with code that wants executed
 	+ Demonstrated by how toolbar can act on a sibling component: ./src/app/simple-text; text toggles bold/italicized whenever corresponding state-button is clicked.
+** UI Design
+   - Use image instead of text for state-buttons and radio-buttons; add img field for location of image in json config
+   - Keep all elements simple: dark text on light background for easy readability
+   - Add spacing between group of elements; Ability for elements to align left or right
+   - CSS style simple-text element to be more appropriately placed on the page
+
 * Improvements
 ** Problems
    1) Repeating code in if-else statement; [[file:src/app/toolbar/toolbar.component.ts::button_onClicked(button_state:%20boolean)%20{][toolbar.component.ts]]
@@ -415,6 +421,7 @@
   - [[https://stackblitz.com/github/ckwojai/toolbar-challenge/tree/config_refactor][Stackblitz refactor_config branch]]
   - https://stackblitz.com/edit/github-tjfvrs-rwmi16
   - [[https://stackblitz.com/edit/github-tefdaa][Stackblitz Master Branch]]
+  -
 
 * Ideas
   1) Toolbar component, integrating bunch of umbrella smaller component satisfying the above requirements

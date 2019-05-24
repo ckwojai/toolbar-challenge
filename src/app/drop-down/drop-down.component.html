@@ -1,5 +1,5 @@
 <div ngbDropdown class="d-inline-block">
-  <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{config.title}}</button>
+  <button class="btn btn-outline-dark" id="dropdownBasic1" ngbDropdownToggle>{{config.title}}</button>
   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
 	<button (click)="onClick(selector.text)" *ngFor="let selector of config.selectors" ngbDropdownItem>{{selector.text}}</button>
   </div>
